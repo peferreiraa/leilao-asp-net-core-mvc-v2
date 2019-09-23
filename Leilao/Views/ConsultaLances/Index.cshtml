@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Leilao.Models.Pessoa>
+@{
+    ViewData["Title"] = "Lances";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+
+    @using (Html.BeginForm("Index", "ConsultaLances", FormMethod.Get))
+    {
+        @Html.TextBox("Pesquisa")
+        <button type="submit" class="btn btn-primary">Pesquisar</button>
+    }
+</p>
+
+
+<table class="table table-striped table-hover">
+
+    <thead>
+        <tr class="success">
+            
+
+            <th>
+                @Html.DisplayNameFor(model => model.Produto.Nome)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Lance)
+            </th>
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Nome)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => item.Lance)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

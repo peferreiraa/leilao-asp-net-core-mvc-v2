@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Leilao.Models.Produto>
+
+@{
+    ViewData["Title"] = "Itens";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+
+    @using (Html.BeginForm("Index", "Produtos", FormMethod.Get))
+    {
+        @Html.TextBox("Pesquisa")
+        <button type="submit" class="btn btn-primary">Pesquisar</button>
+    }
+</p>
+
+<p>
+    <a asp-action="Create" class="btn btn-default">Cadastrar Item</a>
+</p>
+<table class="table">
+    <thead>
+        <tr class="success">
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+         
+        </tr>
+}
+    </tbody>
+</table>
